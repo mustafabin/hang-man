@@ -1,4 +1,39 @@
 * {
   padding: 0;
   margin: 0;
+  /* border: 1px solid red; */
+}
+.game-area {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard {
+}
+
+.row {
+  text-align: center;
+  margin: 10px;
+}
+
+.key {
+  display: inline-block;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  border: 1px dashed rgb(250, 171, 171);
+  transition: 0.5s;
+}
+
+.key:hover {
+  background-color: #8119c7;
+  color: #fff;
+  font-size: larger;
+  border: none;
+}
+.active {
+  background-color: #8119c7;
+  color: #fff;
 }
