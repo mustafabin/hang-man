@@ -18,6 +18,9 @@ let createDashes = (word) => {
   }
 };
 let updateImg = (num) => {
+  if (num > 5) {
+    num = "start";
+  }
   document.querySelector("img").src = `media/${num}.svg`;
 };
 
