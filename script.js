@@ -28,26 +28,25 @@ let checkForMatch = (inputChar, word, key) => {
   let correctGuess = false;
   let wordArr = [];
 
-  if (guessChances - 1 != 0 && !won) {
-    document.querySelectorAll(".word-letter").forEach((char, i) => {
-      if (inputChar == word[i]) {
-        char.textContent = word[i].toUpperCase();
-        correctGuess = true;
-      }
-      wordArr.push(char.textContent);
-    });
+  document.querySelectorAll(".word-letter").forEach((char, i) => {
+    if (inputChar == word[i]) {
+      char.textContent = word[i].toUpperCase();
+      correctGuess = true;
+    }
+    wordArr.push(char.textContent);
+  });
+  if ((guessChances - 1 != 0 || correctGuess) && !won) {
     if (correctGuess) {
       key.classList.add("correct");
     } else {
       key.classList.add("wrong");
+      updateImg(guessChances - 1);
       guessChances--;
-      updateImg(guessChances);
     }
     if (!wordArr.includes("_")) {
       console.log("win");
       document.querySelector(".guess").innerHTML = "You Win";
-
-      return (won = true);
+      won = true;
     }
 
     document.querySelector(".guesses-left").textContent = guessChances;
@@ -55,7 +54,7 @@ let checkForMatch = (inputChar, word, key) => {
     document.querySelector(
       ".guess"
     ).innerHTML = `YOU LOSE: the word was  ' ${word} ' `;
-    updateImg(guessChances - 1);
+    updateImg(guessChances);
   }
 };
 
