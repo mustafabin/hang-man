@@ -5,6 +5,8 @@
 }
 .game-area {
   display: flex;
+  background-color: #fcfcfc;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   justify-content: center;
@@ -32,8 +34,70 @@
   color: #fff;
   font-size: larger;
   border: none;
+  border-radius: 20px;
 }
 .active {
   background-color: #8119c7;
   color: #fff;
+}
+.word-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+.word-letter {
+  color: black;
+  font-size: 2.5rem;
+  padding: 20px;
+}
+.correct {
+  background-color: lawngreen;
+  pointer-events: none;
+}
+.wrong {
+  pointer-events: none;
+  background-color: red;
+}
+.hide {
+  display: none;
+}
+
+button {
+  background-color: #fff;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  padding: 10px;
+  margin: 10px;
+}
+.inputBtn:hover {
+  background-color: rgb(141, 197, 84);
+}
+.apiBtn:hover {
+  background-color: rgb(91, 91, 192);
+}
+p {
+  display: none;
+  padding: 50px;
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.guessBtns {
+  display: flex;
+  width: 150px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 10px;
+}
+label {
+  padding: 5px;
+}
+img {
+  width: 360px;
+  padding: 15px;
 }

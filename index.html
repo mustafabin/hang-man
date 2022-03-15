@@ -13,6 +13,16 @@
 <body>
 
   <div class="game-area" tabindex="0">
+
+
+    <img src="media/start.svg" alt="">
+
+    <div class="word-container">
+      <div class="startingBtns">
+        <button class="inputBtn">Input Your Word</button>
+        <button class="apiBtn">Random Word</button>
+      </div>
+    </div>
     <div class="keyboard">
       <div class="top-row row">
         <div class="key" data-letter="q">q</div>
@@ -47,6 +57,17 @@
         <div class="key" data-letter="n">n</div>
         <div class="key" data-letter="m">m</div>
       </div>
+    </div>
+    <p class="guess">Guesses left: <span class="guesses-left">6</span>
+    </p>
+    <div class="guessBtns">
+      <h1>Set # of guesses</h1>
+      <input type="radio" name="guess" value="6" id="6" checked>
+      <label for="6">6</label>
+      <input type="radio" name="guess" value="8" id="8">
+      <label for="8">8</label>
+      <input type="radio" name="guess" value="10" id="10">
+      <label for="10">10</label>
     </div>
   </div>
   <script src="script.js" async defer></script>
