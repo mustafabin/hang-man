@@ -5,6 +5,7 @@
 }
 .game-area {
   display: flex;
+  position: relative;
   background-color: #fcfcfc;
   flex-direction: column;
   height: 100vh;
@@ -25,7 +26,7 @@
   display: inline-block;
   padding: 5px 10px;
   text-transform: uppercase;
-  border: 1px dashed rgb(250, 171, 171);
+  border: 1px dashed rgb(213, 141, 141);
   transition: 0.5s;
 }
 
@@ -100,4 +101,27 @@ label {
 img {
   width: 360px;
   padding: 15px;
+}
+
+.modal {
+  /* display: none; */
+  display: none;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: absolute;
+  height: 100vh;
+  background-color: rgba(172, 167, 167, 0.139);
+}
+.modal-content {
+  z-index: 2;
+  height: 40px;
+  font-size: 1rem;
+}
+button.modal-content {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 5px;
+  border-radius: 10px;
 }

@@ -49,8 +49,9 @@ let checkForMatch = (inputChar, word, key) => {
 
     document.querySelector(".guesses-left").textContent = guessChances;
   } else if (!won) {
-    document.querySelector(".guess").innerHTML = "You Lose";
-    console.log("YOU LOSE");
+    document.querySelector(
+      ".guess"
+    ).innerHTML = `YOU LOSE: the word was  ' ${word} ' `;
     updateImg(guessChances - 1);
   }
 };
@@ -70,11 +71,8 @@ let startGame = () => {
   document.querySelector("p").style.display = "block";
   document.querySelector(".guessBtns").style.display = "none";
   document.querySelector(".guesses-left").textContent = guessChances;
-  let word = "";
-  do {
-    word = prompt("enter word thats longer than 0 but less than 10");
-  } while (word.length > 10 || word.length == 0);
-
+  let word = document.querySelector("#word-input").value;
+  console.log(word);
   createDashes(word);
   document.querySelector(".game-area").addEventListener("keydown", (e) => {
     let key = document.querySelector(`[data-letter=${e.key}]`);
@@ -89,7 +87,38 @@ let startGame = () => {
     });
   });
 };
+let apiStart = async () => {
+  guessChances = document.querySelector("input[name='guess']:checked").value;
+  document.querySelector(".startingBtns").classList.add("hide");
+  document.querySelector("p").style.display = "block";
+  document.querySelector(".guessBtns").style.display = "none";
+  document.querySelector(".guesses-left").textContent = guessChances;
+  //https://random-word-api.herokuapp.com/word
+  let response = await axios.get("https://random-word-api.herokuapp.com/word");
+  let word = response.data[0];
+  createDashes(word);
+  document.querySelector(".game-area").addEventListener("keydown", (e) => {
+    let key = document.querySelector(`[data-letter=${e.key}]`);
+    key.classList.add("active");
+
+    setTimeout(() => key.classList.remove("active"), 500);
+    checkForMatch(e.key, word, grabKey(e.key));
+  });
+  document.querySelectorAll(".key").forEach((key) => {
+    key.addEventListener("click", (e) => {
+      checkForMatch(e.target.dataset.letter, word, key);
+    });
+  });
+};
+
 let guessChances = 6;
 let won = false;
-document.querySelector(".inputBtn").addEventListener("click", startGame);
-console.log(grabKey("e"));
+
+document.querySelector(".inputBtn").addEventListener("click", () => {
+  document.querySelector(".modal").style.display = "flex";
+});
+document.querySelector(".apiBtn").addEventListener("click", apiStart);
+document.querySelector("#modal-btn").addEventListener("click", () => {
+  document.querySelector(".modal").style.display = "none";
+  startGame();
+});
